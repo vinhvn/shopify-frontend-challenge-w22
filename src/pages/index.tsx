@@ -20,6 +20,7 @@ const linkStyles: Record<string, TwStyle> = {
   indigo: tw`text-indigo-500 hover:text-indigo-700`,
   purple: tw`text-purple-500 hover:text-purple-700`
 };
+
 const Link = styled.a(({ color }) => [
   tw`block md:inline font-semibold transition-colors duration-300`,
   color && linkStyles[color]

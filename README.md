@@ -43,14 +43,6 @@ yarn build # npm run build
 yarn start # npm start
 ```
 
-### Static HTML
+## 🎨 Design
 
-The `export` script will build the files to be served statically. Note that this comes with some [caveats](https://nextjs.org/docs/advanced-features/static-html-export).
-
-```bash
-yarn export # npm run export
-```
-
-## 📝 Important Notes
-
-* Be sure to update the `package.json` to include your own information for the project you're working on.
+All designs were created prior to development and are available on [Figma](https://www.figma.com/file/VRQiOIdvgQdqHjx20rhRhE/Spacestagram?node-id=0%3A1).
