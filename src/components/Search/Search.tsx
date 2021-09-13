@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import tw, { styled } from 'twin.macro';
 
 import Button from '@/components/Button';
-import { getCurrentDate } from '@/utils/dates';
+import { checkValidDate, getCurrentDate } from '@/utils/dates';
 
 const propTypes = {
   onSearch: PropTypes.func.isRequired
@@ -14,11 +14,12 @@ type SearchProps = PropTypes.InferProps<typeof propTypes>;
 const Search: React.FC<SearchProps> = ({ onSearch }) => {
   const [date, setDate] = useState(getCurrentDate());
 
-  const handleSearch = () => onSearch(date);
+  const handleSearch = () => checkValidDate(date) && onSearch(date);
 
   return (
     <Card>
       <Heading>Search by Date</Heading>
+      <Warning>{`Please pick a date that is either today or before today's date: ${getCurrentDate()}`}</Warning>
       <DateInput
         type="date"
         value={date}
@@ -40,6 +41,10 @@ const Card = styled.div`
 
 const Heading = styled.h3`
   ${tw`font-medium text-lg text-black`}
+`;
+
+const Warning = styled.p`
+  ${tw`font-normal text-base text-spacestagram-darkgray`}
 `;
 
 const DateInput = styled.input`

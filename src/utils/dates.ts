@@ -1,4 +1,4 @@
-import { format, sub, parse } from 'date-fns';
+import { format, sub, parse, compareAsc } from 'date-fns';
 
 export const subtractDate = (date: string, days: number) => {
   return format(
@@ -13,4 +13,8 @@ export const getCurrentDate = () => {
 
 export const formatFullDate = (date: string) => {
   return format(parse(date, 'yyyy-MM-dd', new Date()), 'MMMM dd, yyyy');
+};
+
+export const checkValidDate = (date: string) => {
+  return compareAsc(new Date(), parse(date, 'yyyy-MM-dd', new Date())) >= 0;
 };
