@@ -7,13 +7,12 @@ import { getCurrentDate, formatFullDate } from '@/utils/dates';
 import type { PostData } from '@/utils/types';
 
 import Layout from '@/components/Layout';
-import Navbar from '@/components/Navbar';
 import Paragraph from '@/components/Paragraph';
 import Post from '@/components/Post';
 import Loading from '@/components/Loading';
 import Search from '@/components/Search';
 
-const IndexPage: NextPage = () => {
+const SearchPage: NextPage = () => {
   const router = useRouter();
   const { date: queryDate } = router.query;
   const [date, setDate] = useState((queryDate as string) || getCurrentDate());
@@ -46,31 +45,30 @@ const IndexPage: NextPage = () => {
   };
 
   return (
-    <Layout title="Spacestagram | Search">
-      <Navbar />
-      <Content>
-        <Paragraph title="Search 🔍">
-          Search for a specific photo of the day here!
-        </Paragraph>
-        <Search onSearch={handleSearch} />
-        <Paragraph title={getHeading()} />
-        {processing && (
-          <LoadingContainer>
-            <Loading />
-          </LoadingContainer>
-        )}
-        {post && <Post key={post.date} data={post} />}
-      </Content>
+    <Layout
+      title="Spacestagram | Search"
+      column={
+        <>
+          <Paragraph title="Search 🔍">
+            Search for a specific photo of the day here!
+          </Paragraph>
+          <Search onSearch={handleSearch} />
+        </>
+      }
+    >
+      <Paragraph title={getHeading()} />
+      {processing && (
+        <LoadingContainer>
+          <Loading />
+        </LoadingContainer>
+      )}
+      {post && <Post key={post.date} data={post} />}
     </Layout>
   );
 };
-
-const Content = styled.main`
-  ${tw`flex flex-col mt-4 mb-8`}
-`;
 
 const LoadingContainer = styled.div`
   ${tw`flex justify-center py-8`}
 `;
 
-export default IndexPage;
+export default SearchPage;

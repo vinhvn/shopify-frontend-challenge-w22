@@ -1,16 +1,21 @@
-import * as React from 'react';
+import React from 'react';
 import Head from 'next/head';
+import tw, { styled } from 'twin.macro';
+
+import Navbar from '@/components/Navbar';
 
 type Props = {
   title?: string;
+  column?: React.ReactNode;
   children?: React.ReactNode;
 };
 
 const Layout: React.FunctionComponent<Props> = ({
   title = 'This is the default title',
+  column,
   children
 }) => (
-  <div>
+  <>
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
@@ -43,8 +48,24 @@ const Layout: React.FunctionComponent<Props> = ({
         crossOrigin="anonymous"
       />
     </Head>
-    {children}
-  </div>
+    <Navbar />
+    <Columns>
+      <Content>{children}</Content>
+      <Aside>{column}</Aside>
+    </Columns>
+  </>
 );
+
+const Columns = styled.main`
+  ${tw`max-w-xl lg:max-w-5xl mt-4 flex flex-col-reverse lg:grid lg:grid-cols-5 lg:gap-x-10 post:mx-auto`}
+`;
+
+const Content = styled.div`
+  ${tw`flex flex-col max-w-xl lg:col-span-3 mb-8`}
+`;
+
+const Aside = styled.div`
+  ${tw`max-w-xl lg:max-w-full lg:col-span-2`}
+`;
 
 export default Layout;

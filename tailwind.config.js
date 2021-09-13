@@ -7,6 +7,7 @@ module.exports = {
   important: true,
   theme: {
     screens: {
+      post: '576px',
       sm: '640px',
       md: '768px',
       lg: '1024px',

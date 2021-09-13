@@ -35,7 +35,7 @@ Search.propTypes = propTypes;
 
 // Styled components below
 const Card = styled.div`
-  ${tw`px-3 py-4 space-y-3 bg-white border border-spacestagram-gray`}
+  ${tw`bg-white px-3 py-4 space-y-3 border-t border-b post:border post:rounded-lg border-spacestagram-gray`}
 `;
 
 const Heading = styled.h3`

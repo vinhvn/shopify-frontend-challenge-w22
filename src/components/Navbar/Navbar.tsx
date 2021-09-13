@@ -25,7 +25,7 @@ const Container = styled.nav`
 `;
 
 const Wrapper = styled.div`
-  ${tw`relative flex items-center justify-between h-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}
+  ${tw`relative flex items-center justify-between h-14 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8`}
 `;
 
 const Title = styled.a`

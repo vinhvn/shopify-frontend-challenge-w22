@@ -7,11 +7,11 @@ import { getCurrentDate } from '@/utils/dates';
 import type { PostData } from '@/utils/types';
 
 import Layout from '@/components/Layout';
-import Navbar from '@/components/Navbar';
 import Paragraph from '@/components/Paragraph';
 import Post from '@/components/Post';
 import Loading from '@/components/Loading';
 import Button from '@/components/Button';
+import CreatedBy from '@/components/CreatedBy';
 
 const IndexPage: NextPage = () => {
   const [date, setDate] = useState(getCurrentDate());
@@ -41,37 +41,37 @@ const IndexPage: NextPage = () => {
   });
 
   return (
-    <Layout title="Spacestagram">
-      <Navbar />
-      <Content>
-        <Paragraph title="Welcome 👋">
-          {
-            'Welcome to Spacestagram! 🚀\n\nImage-sharing from the final frontier, brought to you by NASA’s image API.\n\nBrowse, like, and share posts about space straight from NASA. Any photos you like are automatically saved to your profile so you can always take a look at them later!'
-          }
-        </Paragraph>
-        <Paragraph title="Posts" />
-        <PostsContainer>
-          {posts.map((post) => (
-            <Post key={post.date} data={post} />
-          ))}
-        </PostsContainer>
-        <div tw="flex flex-col w-full px-3">
-          <LoadingContainer ref={sentryRef}>
-            <Loading />
-          </LoadingContainer>
-          <Paragraph center>Taking a while? Click below to retry.</Paragraph>
-          <Button block onClick={queryPosts}>
-            Load More Posts
-          </Button>
-        </div>
-      </Content>
+    <Layout
+      title="Spacestagram"
+      column={
+        <>
+          <Paragraph title="Welcome 👋">
+            {
+              'Welcome to Spacestagram! 🚀\n\nImage-sharing from the final frontier, brought to you by NASA’s image API.\n\nBrowse, like, and share posts about space straight from NASA. Any photos you like are automatically saved to your profile so you can always take a look at them later!'
+            }
+          </Paragraph>
+          <CreatedBy />
+        </>
+      }
+    >
+      <Paragraph title="Posts" />
+      <PostsContainer>
+        {posts.map((post) => (
+          <Post key={post.date} data={post} />
+        ))}
+      </PostsContainer>
+      <BottomContainer>
+        <LoadingContainer ref={sentryRef}>
+          <Loading />
+        </LoadingContainer>
+        <Paragraph center>Taking a while? Click below to retry.</Paragraph>
+        <Button block onClick={queryPosts}>
+          Load More Posts
+        </Button>
+      </BottomContainer>
     </Layout>
   );
 };
-
-const Content = styled.main`
-  ${tw`flex flex-col mt-4 mb-8`}
-`;
 
 const PostsContainer = styled.div`
   ${tw`flex flex-col space-y-4`}
@@ -79,6 +79,10 @@ const PostsContainer = styled.div`
 
 const LoadingContainer = styled.div`
   ${tw`flex justify-center py-8`}
+`;
+
+const BottomContainer = styled.div`
+  ${tw`flex flex-col w-full px-3`}
 `;
 
 export default IndexPage;

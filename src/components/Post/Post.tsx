@@ -70,7 +70,7 @@ Post.propTypes = propTypes;
 
 // Styled components below
 const Card = styled.article`
-  ${tw`bg-white pb-4 border-t border-b border-spacestagram-gray transition-transform transform-gpu animate-post`}
+  ${tw`bg-white pb-4 border-t border-b post:border post:rounded-lg border-spacestagram-gray transition-transform transform-gpu animate-post`}
 `;
 
 const Header = styled.div`
