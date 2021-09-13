@@ -1,5 +1,10 @@
 {
-  "extends": ["next", "next/core-web-vitals", "airbnb-typescript", "plugin:prettier/recommended"],
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "airbnb-typescript",
+    "plugin:prettier/recommended"
+  ],
   "env": {
     "browser": true,
     "commonjs": true,
@@ -12,6 +17,7 @@
     "project": "./tsconfig.json"
   },
   "rules": {
+    "@typescript-eslint/no-use-before-define": "off",
     "import/no-extraneous-dependencies": "off",
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off"

@@ -26,6 +26,13 @@ module.exports = {
       indigo: colors.indigo,
       purple: colors.violet,
       pink: colors.pink,
+
+      spacestagram: {
+        primary: '#5569CB',
+        secondary: '#98ABFF',
+        gray: '#D3D3D3',
+        darkgray: '#6B7280',
+      }
     },
     spacing: {
       px: '1px',
@@ -240,6 +247,7 @@ module.exports = {
     },
     fontFamily: {
       sans: [
+        'Roobert',
         'ui-sans-serif',
         'system-ui',
         '-apple-system',

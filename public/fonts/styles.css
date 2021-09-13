@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'Roobert';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Roobert'), local('Roobert-Regular'),
+    url('/fonts/Roobert-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Roobert';
+  font-style: medium;
+  font-weight: 500;
+  font-display: swap;
+  src: local('Roobert'), local('Roobert-Medium'),
+    url('/fonts/Roobert-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Roobert';
+  font-style: semibold;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Roobert'), local('Roobert-SemiBold'),
+    url('/fonts/Roobert-SemiBold.woff2') format('woff2');
+}

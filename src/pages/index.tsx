@@ -1,69 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import { NextPage } from 'next';
-import tw, { styled, TwStyle } from 'twin.macro';
+import tw from 'twin.macro';
+
+import { getCurrentDate } from '@/utils/dates';
 
 import Layout from '@/components/Layout';
-
-const Container = styled.div`
-  ${tw`absolute inset-0 w-full h-screen flex flex-col justify-center items-center`}
-`;
-
-const Title = styled.h1`
-  ${tw`text-4xl sm:text-5xl font-semibold tracking-wide mb-12`}
-`;
-
-const linkStyles: Record<string, TwStyle> = {
-  red: tw`text-red-500 hover:text-red-700`,
-  yellow: tw`text-yellow-500 hover:text-yellow-700`,
-  green: tw`text-green-500 hover:text-green-700`,
-  blue: tw`text-blue-500 hover:text-blue-700`,
-  indigo: tw`text-indigo-500 hover:text-indigo-700`,
-  purple: tw`text-purple-500 hover:text-purple-700`
-};
-
-const Link = styled.a(({ color }) => [
-  tw`block md:inline font-semibold transition-colors duration-300`,
-  color && linkStyles[color]
-]);
+import Navbar from '@/components/Navbar';
+import Button from '@/components/Button';
+import IconButton from '@/components/Button/IconButton';
 
 const IndexPage: NextPage = () => {
-  const [title, setTitle] = useState('Querying...');
+  const [date, setDate] = useState(getCurrentDate());
+  const [processing, setProcessing] = useState(false);
 
-  useEffect(() => {
-    const fetchApi = async () => {
-      const res = await fetch('api/hello');
-      const data = await res.json();
-      setTitle(data.title);
-    };
-    fetchApi();
-  }, []);
+  const queryPosts = async () => {
+    setProcessing(true);
+    const response = await fetch(`/api/photos?date=${date}`).then((res) =>
+      res.json()
+    );
+    setDate(response.new_date);
+    setProcessing(false);
+  };
 
   return (
-    <Layout title="Home | Next.js + TypeScript Example">
-      <Container>
-        <Title>{title}</Title>
-        <div tw="text-xl space-y-4 md:space-x-4">
-          <span>Learn</span>
-          <Link color="red" href="https://reactjs.org/">
-            React
-          </Link>
-          <Link color="yellow" href="https://nextjs.org/docs">
-            Next.js
-          </Link>
-          <Link color="green" href="https://tailwindcss.com">
-            Tailwind CSS
-          </Link>
-          <Link color="blue" href="https://github.com/ben-rogerson/twin.macro">
-            Twin.macro
-          </Link>
-          <Link color="indigo" href="https://styled-components.com">
-            Styled Components
-          </Link>
-          <Link color="purple" href="https://typescriptlang.org">
-            TypeScript
-          </Link>
-        </div>
-      </Container>
+    <Layout title="Spacestagram">
+      <Navbar />
+      <div tw="flex space-x-4 p-4">
+        <Button onClick={() => {}}>Search</Button>
+        <Button outline onClick={() => {}}>
+          Change
+        </Button>
+        <IconButton icon="search" fill onClick={() => {}} />
+        <IconButton icon="heart" onClick={() => {}} />
+      </div>
+      <div tw="flex p-4">
+        <Button block onClick={queryPosts}>
+          {processing ? 'Loading...' : 'Load More Posts'}
+        </Button>
+      </div>
     </Layout>
   );
 };
