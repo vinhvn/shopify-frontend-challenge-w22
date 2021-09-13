@@ -5,13 +5,13 @@ import tw, { styled } from 'twin.macro';
 import {
   HeartOutlined,
   HeartFilled,
-  ShareAltOutlined,
+  LinkOutlined,
   UserOutlined,
   SearchOutlined
 } from '@ant-design/icons';
 
 const propTypes = {
-  icon: PropTypes.oneOf(['heart', 'heartOutline', 'share', 'user', 'search'])
+  icon: PropTypes.oneOf(['heart', 'heartOutline', 'link', 'user', 'search'])
     .isRequired,
   fill: PropTypes.bool,
   href: PropTypes.string,
@@ -35,8 +35,8 @@ const IconButton: React.FC<IconButtonProps> = ({
         return <HeartFilled style={sizeStyle} />;
       case 'heartOutline':
         return <HeartOutlined style={sizeStyle} />;
-      case 'share':
-        return <ShareAltOutlined style={sizeStyle} />;
+      case 'link':
+        return <LinkOutlined style={sizeStyle} />;
       case 'user':
         return <UserOutlined style={sizeStyle} />;
       case 'search':
@@ -47,20 +47,18 @@ const IconButton: React.FC<IconButtonProps> = ({
   };
   if (href) {
     return (
-      <StyledLink $fill={fill} href={href}>
-        <Icon />
-      </StyledLink>
+      <Link href={href} passHref>
+        <StyledLink $fill={fill}>
+          <Icon />
+        </StyledLink>
+      </Link>
     );
   }
   return onClick ? (
     <StyledButton type="button" $fill={fill} onClick={onClick}>
       <Icon />
     </StyledButton>
-  ) : (
-    <StyledButton type="button" $fill={fill}>
-      <Icon />
-    </StyledButton>
-  );
+  ) : null;
 };
 
 IconButton.propTypes = propTypes;
@@ -76,12 +74,12 @@ type StyleProps = {
 };
 
 const StyledButton = styled.button(({ $fill }: StyleProps) => [
-  tw`w-8 h-8 flex justify-center items-center rounded-full font-semibold transition-colors duration-200 focus:outline-none focus:ring focus:border-spacestagram-secondary`,
+  tw`w-8 h-8 flex justify-center items-center rounded-full font-semibold cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring focus:border-spacestagram-secondary`,
   $fill
-    ? tw`bg-spacestagram-primary text-white`
-    : tw`bg-transparent text-spacestagram-primary`
+    ? tw`bg-spacestagram-primary text-white border hover:bg-spacestagram-secondary`
+    : tw`bg-transparent text-spacestagram-primary hover:text-spacestagram-secondary`
 ]);
 
-const StyledLink = StyledButton.withComponent(Link);
+const StyledLink = StyledButton.withComponent('a');
 
 export default IconButton;

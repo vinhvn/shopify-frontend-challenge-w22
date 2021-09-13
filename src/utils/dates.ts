@@ -10,3 +10,7 @@ export const subtractDate = (date: string, days: number) => {
 export const getCurrentDate = () => {
   return format(new Date(), 'yyyy-MM-dd');
 };
+
+export const formatFullDate = (date: string) => {
+  return format(parse(date, 'yyyy-MM-dd', new Date()), 'MMMM dd, yyyy');
+};

@@ -5,4 +5,7 @@ module.exports = {
     config.resolve.fallback = { fs: false, module: false }
     return config
   },
+  images: {
+    domains: ['apod.nasa.gov', 'img.youtube.com'],
+  }
 }

@@ -1,15 +1,20 @@
 import React from 'react';
 import tw, { styled } from 'twin.macro';
-import IconButton from '@/components/Button/IconButton';
+import Link from 'next/link';
+
+import IconButton from '@/components/IconButton';
 
 const Navbar = () => {
   return (
     <Container>
       <Wrapper>
-        <Title>Spacestagram</Title>
-        <ButtonsContainer>
+        <Link href="/" passHref>
+          <Title>Spacestagram</Title>
+        </Link>
+        <Buttons>
           <IconButton fill icon="search" href="/search" />
-        </ButtonsContainer>
+          <IconButton fill icon="user" href="/liked" />
+        </Buttons>
       </Wrapper>
     </Container>
   );
@@ -23,12 +28,12 @@ const Wrapper = styled.div`
   ${tw`relative flex items-center justify-between h-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}
 `;
 
-const Title = styled.h1`
+const Title = styled.a`
   ${tw`text-3xl font-semibold`}
 `;
 
-const ButtonsContainer = styled.div`
-  ${tw`flex space-x-4`}
+const Buttons = styled.div`
+  ${tw`flex space-x-3`}
 `;
 
 export default Navbar;

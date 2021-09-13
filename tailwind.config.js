@@ -4,6 +4,7 @@ module.exports = {
   purge: [],
   presets: [],
   darkMode: false, // or 'media' or 'class'
+  important: true,
   theme: {
     screens: {
       sm: '640px',
@@ -77,6 +78,7 @@ module.exports = {
       ping: 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite',
       pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       bounce: 'bounce 1s infinite',
+      post: 'post 150ms cubic-bezier(0.4, 0, 0.6, 1) 0s'
     },
     backdropBlur: (theme) => theme('blur'),
     backdropBrightness: (theme) => theme('brightness'),
@@ -484,6 +486,14 @@ module.exports = {
           animationTimingFunction: 'cubic-bezier(0,0,0.2,1)',
         },
       },
+      post: {
+        '0%': {
+          transform: 'scale(0)'
+        },
+        '100%': {
+          transform: 'scale(1)'
+        }
+      }
     },
     letterSpacing: {
       tighter: '-0.05em',
@@ -523,6 +533,9 @@ module.exports = {
       ...theme('spacing'),
       full: '100%',
       screen: '100vh',
+      image: {
+        sm: '375px'
+      }
     }),
     maxWidth: (theme, { breakpoints }) => ({
       none: 'none',
@@ -742,6 +755,7 @@ module.exports = {
       opacity: 'opacity',
       shadow: 'box-shadow',
       transform: 'transform',
+      'max-height': 'max-height',
     },
     transitionTimingFunction: {
       DEFAULT: 'cubic-bezier(0.4, 0, 0.2, 1)',
