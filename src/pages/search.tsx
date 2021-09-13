@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NextPage } from 'next';
+import { useRouter } from 'next/router';
 import tw, { styled } from 'twin.macro';
 
 import { getCurrentDate, formatFullDate } from '@/utils/dates';
@@ -13,7 +14,9 @@ import Loading from '@/components/Loading';
 import Search from '@/components/Search';
 
 const IndexPage: NextPage = () => {
-  const [date, setDate] = useState(getCurrentDate());
+  const router = useRouter();
+  const { date: queryDate } = router.query;
+  const [date, setDate] = useState((queryDate as string) || getCurrentDate());
   const [post, setPost] = useState<PostData | undefined>(undefined);
   const [processing, setProcessing] = useState(false);
 
@@ -21,10 +24,10 @@ const IndexPage: NextPage = () => {
     queryPost();
   }, []);
 
-  const queryPost = async () => {
+  const queryPost = async (newDate?: string) => {
     setProcessing(true);
-    const response = await fetch(`/api/photo?date=${date}`).then((res) =>
-      res.json()
+    const response = await fetch(`/api/photo?date=${newDate || date}`).then(
+      (res) => res.json()
     );
     setPost(response.photo);
     setProcessing(false);
@@ -32,7 +35,7 @@ const IndexPage: NextPage = () => {
 
   const handleSearch = (newDate: string) => {
     setDate(newDate);
-    queryPost();
+    queryPost(newDate);
   };
 
   const getHeading = () => {

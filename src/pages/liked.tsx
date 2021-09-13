@@ -11,10 +11,9 @@ import Paragraph from '@/components/Paragraph';
 import Post from '@/components/Post';
 
 const IndexPage: NextPage = () => {
-  const [posts, setPosts] = useState<PostData[]>(getPosts());
+  const [posts, setPosts] = useState<PostData[]>([]);
 
   useEffect(() => {
-    console.log(posts);
     setPosts(getPosts());
   }, []);
 

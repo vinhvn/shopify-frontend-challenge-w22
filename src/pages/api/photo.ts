@@ -1,12 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import type { PostData } from '@/utils/types';
 
-const { NEXT_PUBLIC_API_KEY } = process.env;
-const API_URL = 'https://api.nasa.gov/planetary/apod';
+const { NEXT_PUBLIC_API_KEY, NEXT_PUBLIC_API_URL } = process.env;
 
 const getPhotosByDate = async (date: string) => {
   const response = await fetch(
-    `${API_URL}?api_key=${NEXT_PUBLIC_API_KEY}&date=${date}&thumbs=true`
+    `${NEXT_PUBLIC_API_URL}?api_key=${NEXT_PUBLIC_API_KEY}&date=${date}&thumbs=true`
   );
   const data = {
     photo: await response.json()

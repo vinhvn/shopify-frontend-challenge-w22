@@ -58,7 +58,8 @@ const Post: React.FC<PostProps> = ({ data }) => {
         ) : (
           <IconButton icon="heartOutline" onClick={handleLike} />
         )}
-        <IconButton icon="link" href={hdurl} />
+        <IconButton icon="link" href={`/search?date=${date}`} />
+        <IconButton icon="export" href={hdurl} />
       </Buttons>
       <Details text={explanation} />
     </Card>

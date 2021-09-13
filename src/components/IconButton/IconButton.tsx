@@ -7,12 +7,19 @@ import {
   HeartFilled,
   LinkOutlined,
   UserOutlined,
-  SearchOutlined
+  SearchOutlined,
+  ExportOutlined
 } from '@ant-design/icons';
 
 const propTypes = {
-  icon: PropTypes.oneOf(['heart', 'heartOutline', 'link', 'user', 'search'])
-    .isRequired,
+  icon: PropTypes.oneOf([
+    'heart',
+    'heartOutline',
+    'link',
+    'user',
+    'search',
+    'export'
+  ]).isRequired,
   fill: PropTypes.bool,
   href: PropTypes.string,
   onClick: PropTypes.func
@@ -41,6 +48,8 @@ const IconButton: React.FC<IconButtonProps> = ({
         return <UserOutlined style={sizeStyle} />;
       case 'search':
         return <SearchOutlined style={sizeStyle} />;
+      case 'export':
+        return <ExportOutlined style={sizeStyle} />;
       default:
         return <>Invalid Icon</>;
     }
