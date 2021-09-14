@@ -14,11 +14,15 @@ const Details: React.FC<DetailsProps> = ({ text }) => {
 
   return (
     <Container>
-      <TextContainer>
+      <TextContainer aria-expanded={expanded !== null ? expanded : 'false'}>
         <Text $expanded={!!expanded}>{text}</Text>
         <Gradient $expanded={!!expanded} />
       </TextContainer>
-      <ExpandButton type="button" onClick={() => setExpanded(!expanded)}>
+      <ExpandButton
+        type="button"
+        onClick={() => setExpanded(!expanded)}
+        aria-label={expanded ? 'Collapse details' : 'Expand details'}
+      >
         <ExpandIcon $expanded={!!expanded} />
       </ExpandButton>
     </Container>
