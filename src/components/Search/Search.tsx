@@ -27,7 +27,7 @@ const Search: React.FC<SearchProps> = ({ onSearch }) => {
   return (
     <Card>
       <Heading>Search by Date</Heading>
-      <Warning error={error}>
+      <Warning $error={error}>
         Please pick a date that is between{' '}
         <span tw="text-spacestagram-primary">1995-06-16</span> and today&apos;s
         date: <span tw="text-spacestagram-primary">{getCurrentDate()}</span>
@@ -37,8 +37,8 @@ const Search: React.FC<SearchProps> = ({ onSearch }) => {
         value={date}
         onChange={(e) => setDate(e.target.value)}
       />
-      <Button block onClick={handleSearch}>
-        Search
+      <Button block onClick={handleSearch} ariaLabel="Search for post">
+        Search for Post
       </Button>
     </Card>
   );
@@ -56,12 +56,12 @@ const Heading = styled.h3`
 `;
 
 interface WarningProps {
-  error: boolean;
+  $error: boolean;
 }
 
-const Warning = styled.p(({ error }: WarningProps) => [
+const Warning = styled.p(({ $error }: WarningProps) => [
   tw`font-normal text-base transition-colors duration-200`,
-  error ? tw`text-red-600` : tw`text-spacestagram-darkgray`
+  $error ? tw`text-red-600` : tw`text-spacestagram-darkgray`
 ]);
 
 const DateInput = styled.input`

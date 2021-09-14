@@ -12,8 +12,18 @@ const Navbar = () => {
           <Title>Spacestagram</Title>
         </Link>
         <Buttons>
-          <IconButton fill icon="search" href="/search" />
-          <IconButton fill icon="user" href="/liked" />
+          <IconButton
+            fill
+            icon="search"
+            href="/search"
+            ariaLabel="Go to Search page"
+          />
+          <IconButton
+            fill
+            icon="user"
+            href="/liked"
+            ariaLabel="Go to Profile page"
+          />
         </Buttons>
       </Wrapper>
     </Container>
@@ -29,7 +39,7 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.a`
-  ${tw`text-3xl font-semibold`}
+  ${tw`text-2xl xs:text-3xl font-semibold`}
 `;
 
 const Buttons = styled.div`

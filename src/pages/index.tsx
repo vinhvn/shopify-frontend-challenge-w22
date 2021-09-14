@@ -47,7 +47,7 @@ const IndexPage: NextPage = () => {
         <>
           <Paragraph title="Welcome 👋">
             {
-              'Welcome to Spacestagram! 🚀\n\nImage-sharing from the final frontier, brought to you by NASA’s image API.\n\nBrowse, like, and share posts about space straight from NASA. Any photos you like are automatically saved to your profile so you can always take a look at them later!'
+              'Welcome to Spacestagram! 🚀\nImage-sharing from the final frontier,\nbrought to you by NASA’s APOD image API.\n\nBrowse, like, and share posts about space straight from NASA. Any photos you like are automatically saved to your profile so you can always take a look at them later!\n\nP.S. You can double tap a photo to like it!'
             }
           </Paragraph>
           <CreatedBy />
@@ -64,8 +64,8 @@ const IndexPage: NextPage = () => {
         <LoadingContainer ref={sentryRef}>
           <Loading />
         </LoadingContainer>
-        <Paragraph center>Taking a while? Click below to retry.</Paragraph>
-        <Button block onClick={queryPosts}>
+        <Paragraph>Taking a while? Click below to retry.</Paragraph>
+        <Button block onClick={queryPosts} ariaLabel="Load more posts">
           Load More Posts
         </Button>
       </BottomContainer>

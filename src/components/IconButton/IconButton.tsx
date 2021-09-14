@@ -22,6 +22,7 @@ const propTypes = {
   ]).isRequired,
   fill: PropTypes.bool,
   href: PropTypes.string,
+  ariaLabel: PropTypes.string,
   onClick: PropTypes.func
 };
 
@@ -31,6 +32,7 @@ const IconButton: React.FC<IconButtonProps> = ({
   icon,
   fill,
   href,
+  ariaLabel,
   onClick
 }) => {
   const Icon = () => {
@@ -39,7 +41,7 @@ const IconButton: React.FC<IconButtonProps> = ({
     };
     switch (icon) {
       case 'heart':
-        return <HeartFilled style={sizeStyle} />;
+        return <HeartFilled style={sizeStyle} tw="animate-like" />;
       case 'heartOutline':
         return <HeartOutlined style={sizeStyle} />;
       case 'link':
@@ -57,14 +59,22 @@ const IconButton: React.FC<IconButtonProps> = ({
   if (href) {
     return (
       <Link href={href} passHref>
-        <StyledLink $fill={fill}>
+        <StyledLink
+          aria-label={ariaLabel !== null ? ariaLabel : undefined}
+          $fill={fill}
+        >
           <Icon />
         </StyledLink>
       </Link>
     );
   }
   return onClick ? (
-    <StyledButton type="button" $fill={fill} onClick={onClick}>
+    <StyledButton
+      type="button"
+      aria-label={ariaLabel !== null ? ariaLabel : undefined}
+      $fill={fill}
+      onClick={onClick}
+    >
       <Icon />
     </StyledButton>
   ) : null;
@@ -74,6 +84,7 @@ IconButton.propTypes = propTypes;
 IconButton.defaultProps = {
   fill: false,
   href: undefined,
+  ariaLabel: undefined,
   onClick: () => {}
 };
 

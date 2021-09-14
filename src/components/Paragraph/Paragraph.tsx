@@ -4,29 +4,23 @@ import tw, { styled } from 'twin.macro';
 
 const propTypes = {
   title: PropTypes.string,
-  center: PropTypes.bool,
   children: PropTypes.node
 };
 
 type ParagraphProps = PropTypes.InferProps<typeof propTypes>;
 
-const Paragraph: React.FC<ParagraphProps> = ({ title, center, children }) => {
+const Paragraph: React.FC<ParagraphProps> = ({ title, children }) => {
   return (
-    <div>
+    <>
       {title && <Heading>{title}</Heading>}
-      {children && (
-        <Content hasTitle={!!title} center={!!center}>
-          {children}
-        </Content>
-      )}
-    </div>
+      {children && <Content $hasTitle={!!title}>{children}</Content>}
+    </>
   );
 };
 
 Paragraph.propTypes = propTypes;
 Paragraph.defaultProps = {
   title: undefined,
-  center: false,
   children: null
 };
 
@@ -36,14 +30,12 @@ const Heading = styled.h2`
 `;
 
 interface ContentProps {
-  hasTitle: boolean;
-  center: boolean;
+  $hasTitle: boolean;
 }
 
-const Content = styled.p(({ hasTitle, center }: ContentProps) => [
+const Content = styled.p(({ $hasTitle }: ContentProps) => [
   tw`font-normal text-base text-spacestagram-darkgray whitespace-pre-line`,
-  hasTitle ? tw`px-3 pb-3` : tw`p-3`,
-  center ? tw`text-center` : 'text-left'
+  $hasTitle ? tw`px-3 pb-3` : tw`p-3`
 ]);
 
 export default Paragraph;

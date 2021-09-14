@@ -7,5 +7,9 @@ module.exports = {
   },
   images: {
     domains: ['apod.nasa.gov', 'img.youtube.com'],
+  },
+  i18n: {
+    locales: ['en-US'],
+    defaultLocale: 'en-US'
   }
 }

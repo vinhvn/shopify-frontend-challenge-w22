@@ -1,39 +1,56 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import tw, { styled } from 'twin.macro';
+import { HeartFilled } from '@ant-design/icons';
 
 const propTypes = {
   src: PropTypes.string.isRequired,
-  alt: PropTypes.string
+  alt: PropTypes.string,
+  liked: PropTypes.bool,
+  onDoubleClick: PropTypes.func.isRequired
 };
 
 type ImageProps = PropTypes.InferProps<typeof propTypes>;
 
-const Image: React.FC<ImageProps> = ({ src, alt }) => {
+const Image: React.FC<ImageProps> = ({ src, alt, liked, onDoubleClick }) => {
   return (
-    <Container>
+    <Container
+      onDoubleClick={onDoubleClick || undefined}
+      aria-label={liked ? 'Unlike photo' : 'Like photo'}
+    >
       <Content
         width={375}
         height={375}
         src={src}
         alt={alt !== null ? alt : 'Image'}
       />
+      <Icon $liked={liked} />
     </Container>
   );
 };
 
 Image.propTypes = propTypes;
 Image.defaultProps = {
-  alt: undefined
+  alt: undefined,
+  liked: false
 };
 
 // Styled components below
-const Container = styled.div`
-  ${tw`flex justify-center items-center w-full bg-spacestagram-darkgray`}
+const Container = styled.button`
+  ${tw`flex justify-center items-center w-full bg-spacestagram-darkgray cursor-pointer focus:outline-none focus:ring focus:border-spacestagram-secondary`}
 `;
 
 const Content = styled.img`
   ${tw`w-auto max-h-image-sm`}
 `;
+
+interface IconProps {
+  $liked: boolean | null | undefined;
+}
+
+const Icon = styled(HeartFilled)(({ $liked }: IconProps) => [
+  tw`absolute inline-block text-9xl opacity-0 text-spacestagram-primary`,
+  $liked && tw`animate-like duration-150`
+]);
 
 export default Image;

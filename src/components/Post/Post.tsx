@@ -51,15 +51,36 @@ const Post: React.FC<PostProps> = ({ data }) => {
         <Title>{title}</Title>
         <Date>{date}</Date>
       </Header>
-      <Image src={getUrl()} alt={title} />
+      <Image
+        src={getUrl()}
+        alt={title}
+        liked={liked}
+        onDoubleClick={liked ? handleUnlike : handleLike}
+      />
       <Buttons>
         {liked ? (
-          <IconButton icon="heart" onClick={handleUnlike} />
+          <IconButton
+            icon="heart"
+            ariaLabel="Like photo"
+            onClick={handleUnlike}
+          />
         ) : (
-          <IconButton icon="heartOutline" onClick={handleLike} />
+          <IconButton
+            icon="heartOutline"
+            ariaLabel="Unlike photo"
+            onClick={handleLike}
+          />
         )}
-        <IconButton icon="link" href={`/search?date=${date}`} />
-        <IconButton icon="export" href={hdurl} />
+        <IconButton
+          icon="link"
+          ariaLabel="Link to photo's page"
+          href={`/search?date=${date}`}
+        />
+        <IconButton
+          icon="export"
+          ariaLabel="Link to high definition photo"
+          href={hdurl}
+        />
       </Buttons>
       {explanation && <Details text={explanation} />}
     </Card>

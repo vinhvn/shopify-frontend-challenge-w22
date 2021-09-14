@@ -8,6 +8,7 @@ module.exports = {
   theme: {
     screens: {
       post: '576px',
+      xs: '375px',
       sm: '640px',
       md: '768px',
       lg: '1024px',
@@ -79,7 +80,8 @@ module.exports = {
       ping: 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite',
       pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       bounce: 'bounce 1s infinite',
-      post: 'post 150ms cubic-bezier(0.4, 0, 0.6, 1) 0s'
+      post: 'post 150ms cubic-bezier(0.4, 0, 0.6, 1) forwards',
+      like: 'like 2s cubic-bezier(0.4, 0, 0.6, 1) forwards'
     },
     backdropBlur: (theme) => theme('blur'),
     backdropBrightness: (theme) => theme('brightness'),
@@ -492,6 +494,25 @@ module.exports = {
           transform: 'scale(0)'
         },
         '100%': {
+          transform: 'scale(1)'
+        }
+      },
+      like: {
+        '0%': {
+          to: {
+            opacity: '0',
+            transform: 'scale(0)'
+          }
+        },
+        '15%': {
+          opacity: '0.9',
+          transform: 'scale(1.2)'
+        },
+        '30%': {
+          transform: 'scale(0.95)'
+        },
+        '45%, 80%': {
+          opacity: '0.9',
           transform: 'scale(1)'
         }
       }
