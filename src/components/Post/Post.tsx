@@ -61,7 +61,7 @@ const Post: React.FC<PostProps> = ({ data }) => {
         <IconButton icon="link" href={`/search?date=${date}`} />
         <IconButton icon="export" href={hdurl} />
       </Buttons>
-      <Details text={explanation} />
+      {explanation && <Details text={explanation} />}
     </Card>
   );
 };

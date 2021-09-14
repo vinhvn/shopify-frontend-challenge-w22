@@ -41,7 +41,7 @@ interface ExpandProps {
 }
 
 const Text = styled.p(({ $expanded }: ExpandProps) => [
-  tw`text-xs text-spacestagram-darkgray overflow-hidden transition-max-height duration-300`,
+  tw`text-sm text-spacestagram-darkgray overflow-hidden transition-max-height duration-300`,
   $expanded ? tw`max-h-96` : tw`max-h-16`
 ]);
 

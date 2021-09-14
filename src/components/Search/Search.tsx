@@ -13,13 +13,25 @@ type SearchProps = PropTypes.InferProps<typeof propTypes>;
 
 const Search: React.FC<SearchProps> = ({ onSearch }) => {
   const [date, setDate] = useState(getCurrentDate());
+  const [error, setError] = useState(false);
 
-  const handleSearch = () => checkValidDate(date) && onSearch(date);
+  const handleSearch = () => {
+    if (checkValidDate(date)) {
+      onSearch(date);
+      setError(false);
+    } else {
+      setError(true);
+    }
+  };
 
   return (
     <Card>
       <Heading>Search by Date</Heading>
-      <Warning>{`Please pick a date that is either today or before today's date: ${getCurrentDate()}`}</Warning>
+      <Warning error={error}>
+        Please pick a date that is between{' '}
+        <span tw="text-spacestagram-primary">1995-06-16</span> and today&apos;s
+        date: <span tw="text-spacestagram-primary">{getCurrentDate()}</span>
+      </Warning>
       <DateInput
         type="date"
         value={date}
@@ -43,9 +55,14 @@ const Heading = styled.h3`
   ${tw`font-medium text-lg text-black`}
 `;
 
-const Warning = styled.p`
-  ${tw`font-normal text-base text-spacestagram-darkgray`}
-`;
+interface WarningProps {
+  error: boolean;
+}
+
+const Warning = styled.p(({ error }: WarningProps) => [
+  tw`font-normal text-base transition-colors duration-200`,
+  error ? tw`text-red-600` : tw`text-spacestagram-darkgray`
+]);
 
 const DateInput = styled.input`
   ${tw`px-4 py-2 text-sm w-full rounded-lg border focus:outline-none focus:ring focus:border-spacestagram-secondary`}

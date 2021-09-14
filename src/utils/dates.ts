@@ -16,5 +16,9 @@ export const formatFullDate = (date: string) => {
 };
 
 export const checkValidDate = (date: string) => {
-  return compareAsc(new Date(), parse(date, 'yyyy-MM-dd', new Date())) >= 0;
+  const inputDate = parse(date, 'yyyy-MM-dd', new Date());
+  return (
+    compareAsc(new Date(), inputDate) >= 0 &&
+    compareAsc(parse('1995-06-16', 'yyyy-MM-dd', new Date()), inputDate) <= 0
+  );
 };
