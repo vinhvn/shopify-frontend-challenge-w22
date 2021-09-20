@@ -28,29 +28,6 @@ const Layout: React.FunctionComponent<Props> = ({
           name="description"
           content="Image-sharing from the final frontier."
         />
-        <link rel="shortcut icon" type="image/png" href="favicon.png" />
-        <link rel="prefetch" href="fonts/styles.css" as="style" />
-        <link
-          rel="prefetch"
-          href="fonts/Roobert-Regular.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="prefetch"
-          href="fonts/Roobert-Medium.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="prefetch"
-          href="fonts/Roobert-SemiBold.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
       </Head>
       <Navbar />
       <Columns>
