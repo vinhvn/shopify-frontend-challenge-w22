@@ -9,7 +9,7 @@ const Navbar = () => {
     <Container>
       <Wrapper>
         <Link href="/" passHref>
-          <Title>Spacestagram</Title>
+          <Title data-testid="navbar_title">Spacestagram</Title>
         </Link>
         <Buttons>
           <IconButton

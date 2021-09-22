@@ -7,8 +7,8 @@ const propTypes = {
   block: PropTypes.bool,
   disabled: PropTypes.bool,
   ariaLabel: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired
+  onClick: PropTypes.func,
+  children: PropTypes.node
 };
 
 type ButtonProps = PropTypes.InferProps<typeof propTypes>;
@@ -30,7 +30,8 @@ const Button: React.FC<ButtonProps> = ({
       $disabled={disabled}
       aria-label={ariaLabel !== null ? ariaLabel : undefined}
       aria-disabled={disabled !== null ? disabled : 'false'}
-      onClick={onClick}
+      onClick={onClick !== null ? onClick : undefined}
+      data-testid="button"
     >
       {children}
     </Container>
@@ -42,7 +43,9 @@ Button.defaultProps = {
   outline: false,
   block: false,
   disabled: false,
-  ariaLabel: undefined
+  ariaLabel: undefined,
+  onClick: () => {},
+  children: null
 };
 
 // Styled components below

@@ -3,7 +3,7 @@ import tw, { styled } from 'twin.macro';
 import { Loading3QuartersOutlined } from '@ant-design/icons';
 
 const Loading: React.FC = () => {
-  return <Loader />;
+  return <Loader data-testid="loader" />;
 };
 
 // Styled components below

@@ -15,10 +15,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "paths": {
-      "@/assets/*": ["assets/*"],
       "@/components/*": ["components/*"],
-      "@/pages/*": ["pages/*"],
-      "@/styles/*": ["styles/*"],
       "@/utils/*": ["utils/*"]
     },
     "resolveJsonModule": true,

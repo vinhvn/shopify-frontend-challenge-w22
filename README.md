@@ -30,6 +30,7 @@ Presenting **Spacestagram**, *image-sharing from the final frontier*.
 - [🎨 Design](#-design)
 - [👩‍💻 Technologies and Libraries Used](#-technologies-and-libraries-used)
 - [♿ Accessibility](#-accessibility)
+- [🧪 Testing](#-testing)
 - [📝 Notes](#-notes)
 
 ## 🚀 Features
@@ -88,6 +89,7 @@ All designs, including a design system, were created prior to any development, w
 - Date-fns
 - Styled Components
 - Twin.macro
+- Jest
 - [NASA's APOD API](https://github.com/nasa/apod-api)
 
 Bootstrapped with my [Next.js template](https://github.com/vinhvn/next-typescript-twin-styled-eslint-starter).
@@ -95,6 +97,20 @@ Bootstrapped with my [Next.js template](https://github.com/vinhvn/next-typescrip
 ## ♿ Accessibility
 
 This web application has a mobile design first principle and is fully responsive on mobile. It also has an accessibility score of 100 according to Google lighthouse. This was achieved using [semantic elements](https://developer.mozilla.org/en-US/docs/Glossary/Semantics) and aria labels using [a11yproject's checklist](https://www.a11yproject.com/checklist/).
+
+## 🧪 Testing
+
+Unit tests have been written for all components using Jest. You can run all tests in watch mode by using the command line:
+
+```bash
+yarn test # npm run test
+```
+
+Alternatively, generate coverage by using the following:
+
+```bash
+yarn test:coverage # npm run test:coverage
+```
 
 ## 📝 Notes
 

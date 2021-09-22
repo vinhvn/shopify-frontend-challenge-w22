@@ -3,24 +3,34 @@
   "version": "1.0.0",
   "author": "Vincent Nguyen @vinhvn",
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "dev": "next dev",
     "export": "next export -o dist",
     "stage": "yarn build; yarn start",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "test": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.4",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.0",
+    "babel-jest": "^27.2.1",
     "date-fns": "^2.23.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.2.1",
     "next": "11.0.1",
     "prop-types": "^15.7.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-infinite-scroll-hook": "^4.0.1",
-    "react-responsive": "^9.0.0-beta.4"
+    "react-responsive": "^9.0.0-beta.4",
+    "react-test-renderer": "^17.0.2",
+    "ts-jest": "^27.0.5"
   },
   "devDependencies": {
+    "@types/jest": "^27.0.1",
     "@types/node": "^16.3.3",
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",

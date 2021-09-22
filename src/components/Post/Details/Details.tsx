@@ -13,17 +13,20 @@ const Details: React.FC<DetailsProps> = ({ text }) => {
   const [expanded, setExpanded] = useState(text.length < 240);
 
   return (
-    <Container>
+    <Container data-testid="details_container">
       <TextContainer aria-expanded={expanded !== null ? expanded : 'false'}>
-        <Text $expanded={!!expanded}>{text}</Text>
+        <Body $expanded={!!expanded} data-testid="details_body">
+          {text}
+        </Body>
         <Gradient $expanded={!!expanded} />
       </TextContainer>
       <ExpandButton
         type="button"
         onClick={() => setExpanded(!expanded)}
         aria-label={expanded ? 'Collapse details' : 'Expand details'}
+        data-testid="details_expand-button"
       >
-        <ExpandIcon $expanded={!!expanded} />
+        <ExpandIcon $expanded={!!expanded} data-testid="details_expand-icon" />
       </ExpandButton>
     </Container>
   );
@@ -44,7 +47,7 @@ interface ExpandProps {
   $expanded: boolean;
 }
 
-const Text = styled.p(({ $expanded }: ExpandProps) => [
+const Body = styled.p(({ $expanded }: ExpandProps) => [
   tw`text-sm text-spacestagram-darkgray overflow-hidden transition-max-height duration-300`,
   $expanded ? tw`max-h-96` : tw`max-h-16`
 ]);

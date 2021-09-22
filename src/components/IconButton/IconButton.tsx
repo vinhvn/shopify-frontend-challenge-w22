@@ -62,6 +62,7 @@ const IconButton: React.FC<IconButtonProps> = ({
         <StyledLink
           aria-label={ariaLabel !== null ? ariaLabel : undefined}
           $fill={fill}
+          data-testid="icon-link"
         >
           <Icon />
         </StyledLink>
@@ -74,6 +75,7 @@ const IconButton: React.FC<IconButtonProps> = ({
       aria-label={ariaLabel !== null ? ariaLabel : undefined}
       $fill={fill}
       onClick={onClick}
+      data-testid="icon-button"
     >
       <Icon />
     </StyledButton>

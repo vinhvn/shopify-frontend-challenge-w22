@@ -7,7 +7,7 @@ const propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string,
   liked: PropTypes.bool,
-  onDoubleClick: PropTypes.func.isRequired
+  onDoubleClick: PropTypes.func
 };
 
 type ImageProps = PropTypes.InferProps<typeof propTypes>;
@@ -17,12 +17,14 @@ const Image: React.FC<ImageProps> = ({ src, alt, liked, onDoubleClick }) => {
     <Container
       onDoubleClick={onDoubleClick || undefined}
       aria-label={liked ? 'Unlike photo' : 'Like photo'}
+      data-testid="image_container"
     >
       <Content
         width={375}
         height={375}
         src={src}
         alt={alt !== null ? alt : 'Image'}
+        data-testid="image_content"
       />
       <Icon $liked={liked} />
     </Container>
@@ -32,7 +34,8 @@ const Image: React.FC<ImageProps> = ({ src, alt, liked, onDoubleClick }) => {
 Image.propTypes = propTypes;
 Image.defaultProps = {
   alt: undefined,
-  liked: false
+  liked: false,
+  onDoubleClick: undefined
 };
 
 // Styled components below

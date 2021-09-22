@@ -11,7 +11,7 @@ import Paragraph from '@/components/Paragraph';
 import Post from '@/components/Post';
 import Loading from '@/components/Loading';
 import Button from '@/components/Button';
-import CreatedBy from '@/components/CreatedBy';
+import Link from 'next/link';
 
 const IndexPage: NextPage = () => {
   const [date, setDate] = useState(getCurrentDate());
@@ -50,7 +50,13 @@ const IndexPage: NextPage = () => {
               'Welcome to Spacestagram! 🚀\nImage-sharing from the final frontier,\nbrought to you by NASA’s APOD image API.\n\nBrowse, like, and share posts about space straight from NASA. Any photos you like are automatically saved to your profile so you can always take a look at them later!\n\nP.S. You can double tap a photo to like it!'
             }
           </Paragraph>
-          <CreatedBy />
+          <Details>
+            Created by{' '}
+            <Link href="https://github.com/vinhvn" passHref>
+              <DetailsLink>Vincent Nguyen</DetailsLink>
+            </Link>{' '}
+            with ☕
+          </Details>
         </>
       }
     >
@@ -83,6 +89,14 @@ const LoadingContainer = styled.div`
 
 const BottomContainer = styled.div`
   ${tw`flex flex-col w-full px-3`}
+`;
+
+const Details = styled.p`
+  ${tw`px-3 py-2 text-xs text-spacestagram-darkgray`}
+`;
+
+const DetailsLink = styled.a`
+  ${tw`transition-colors duration-200 ease-in-out text-spacestagram-primary hover:text-spacestagram-secondary`}
 `;
 
 export default IndexPage;

@@ -12,8 +12,12 @@ type ParagraphProps = PropTypes.InferProps<typeof propTypes>;
 const Paragraph: React.FC<ParagraphProps> = ({ title, children }) => {
   return (
     <>
-      {title && <Heading>{title}</Heading>}
-      {children && <Content $hasTitle={!!title}>{children}</Content>}
+      {title && <Heading data-testid="paragraph_header">{title}</Heading>}
+      {children && (
+        <Body $hasTitle={!!title} data-testid="paragraph_body">
+          {children}
+        </Body>
+      )}
     </>
   );
 };
@@ -29,11 +33,11 @@ const Heading = styled.h2`
   ${tw`p-3 text-2xl font-medium`}
 `;
 
-interface ContentProps {
+interface BodyProps {
   $hasTitle: boolean;
 }
 
-const Content = styled.p(({ $hasTitle }: ContentProps) => [
+const Body = styled.p(({ $hasTitle }: BodyProps) => [
   tw`font-normal text-base text-spacestagram-darkgray whitespace-pre-line`,
   $hasTitle ? tw`px-3 pb-3` : tw`p-3`
 ]);

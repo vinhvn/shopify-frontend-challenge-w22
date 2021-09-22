@@ -25,9 +25,9 @@ const Search: React.FC<SearchProps> = ({ onSearch }) => {
   };
 
   return (
-    <Card>
+    <Card data-testid="search_container">
       <Heading>Search by Date</Heading>
-      <Warning $error={error}>
+      <Warning $error={error} data-testid="search_warning">
         Please pick a date that is between{' '}
         <span tw="text-spacestagram-primary">1995-06-16</span> and today&apos;s
         date: <span tw="text-spacestagram-primary">{getCurrentDate()}</span>

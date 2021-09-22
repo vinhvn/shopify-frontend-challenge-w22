@@ -46,10 +46,10 @@ const Post: React.FC<PostProps> = ({ data }) => {
   };
 
   return (
-    <Card>
+    <Card data-testid="post_container">
       <Header>
-        <Title>{title}</Title>
-        <Date>{date}</Date>
+        <Title data-testid="post_title">{title}</Title>
+        <Date data-testid="post_date">{date}</Date>
       </Header>
       <Image
         src={getUrl()}
